@@ -1,0 +1,26 @@
+<idea-plugin version="2">
+  <id>yugecin.intellijlaf</id>
+  <name>Look and Feel chooser</name>
+  <version>1.0</version>
+
+  <description>Allows changing the Look and Feel to any installed Look and Feel.</description>
+
+  <change-notes>changenotes</change-notes>
+
+  <idea-version since-build="120.0"/>
+
+  <depends>com.intellij.modules.lang</depends>
+
+  <application-components>
+    <component>
+      <implementation-class>yugecin.intellijlaf.Plugin</implementation-class>
+    </component>
+  </application-components>
+
+  <actions>
+	<action id="yugecin.idealafaction" class="yugecin.intellijlaf.MenuAction" text="Change LAF" description="Change LAF">
+	<add-to-group group-id="ChangeScheme" relative-to-action="ChangeLaf" anchor="after"/>
+    </action>
+  </actions>
+
+</idea-plugin>
