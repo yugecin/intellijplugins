@@ -1,6 +1,8 @@
 package yugecin.intellijlaf;
 
+import com.intellij.ide.ui.laf.darcula.DarculaInstaller;
 import com.intellij.openapi.components.*;
+import com.intellij.util.ui.UIUtil;
 import org.jetbrains.annotations.*;
 
 import javax.swing.*;
@@ -30,7 +32,11 @@ public class Plugin implements PersistentStateComponent<Plugin.State>
 	{
 		try {
 			if (lafClassName != null) {
+				final boolean uninstalldarcula = UIUtil.isUnderDarcula();
 				UIManager.setLookAndFeel(lafClassName);
+				if (uninstalldarcula) {
+					SwingUtilities.invokeLater(DarculaInstaller::uninstall);
+				}
 			}
 			state.lafClassName = lafClassName;
 		} catch (Throwable t) {
