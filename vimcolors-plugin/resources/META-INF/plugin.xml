@@ -1,0 +1,22 @@
+<idea-plugin version="2">
+  <id>yugecin.intellijvimcolors</id>
+  <name>IdeaVIM colors</name>
+  <version>1.0</version>
+
+  <description>Changes editor caret based on active IdeaVIM mode</description>
+
+  <change-notes>changelist</change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="141.0"/>
+
+  <depends>IdeaVIM</depends>
+  <depends>com.intellij.modules.lang</depends>
+
+  <application-components>
+    <component>
+      <implementation-class>yugecin.intellijvimcolors.CaretPainterComponent</implementation-class>
+    </component>
+  </application-components>
+
+</idea-plugin>
