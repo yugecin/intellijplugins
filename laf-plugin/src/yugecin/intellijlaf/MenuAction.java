@@ -22,6 +22,12 @@ public class MenuAction extends QuickSwitchSchemeAction
 		final LafManager manager = LafManager.getInstance();
 		final UIManager.LookAndFeelInfo[] lafs = UIManager.getInstalledLookAndFeels();
 		final UIManager.LookAndFeelInfo current = manager.getCurrentLookAndFeel();
+		group.add(new DumbAwareAction("Reset", null, ourNotCurrentAction) {
+			@Override
+			public void actionPerformed(AnActionEvent anActionEvent) {
+				Plugin.changeLaf(null);
+			}
+		});
 		for (UIManager.LookAndFeelInfo lf : lafs) {
 			final Icon icon;
 			if (lf == current) {
@@ -29,9 +35,14 @@ public class MenuAction extends QuickSwitchSchemeAction
 			} else {
 				icon = ourNotCurrentAction;
 			}
-			group.add(new DumbAwareAction(lf.getName(), "Change the Look and Feel", icon) {
+			group.add(new DumbAwareAction(lf.getName(), null, icon) {
 				public void actionPerformed(AnActionEvent e) {
 					Plugin.changeLaf(lf.getClassName());
+					try {
+						manager.updateUI();
+						manager.repaintUI();
+					} catch (Throwable ignored) {
+					}
 				}
 			});
 		}

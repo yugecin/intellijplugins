@@ -26,10 +26,12 @@ public class Plugin implements PersistentStateComponent<Plugin.State>
 		changeLaf(state.lafClassName);
 	}
 
-	public static void changeLaf(@NotNull String lafClassName)
+	public static void changeLaf(@Nullable String lafClassName)
 	{
 		try {
-			UIManager.setLookAndFeel(lafClassName);
+			if (lafClassName != null) {
+				UIManager.setLookAndFeel(lafClassName);
+			}
 			state.lafClassName = lafClassName;
 		} catch (Throwable t) {
 			throw new RuntimeException(t);
