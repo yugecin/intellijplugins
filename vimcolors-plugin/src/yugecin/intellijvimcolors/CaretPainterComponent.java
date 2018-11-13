@@ -72,6 +72,9 @@ public class CaretPainterComponent
 				DataContext dataContext,
 				AnActionEvent event)
 			{
+				if (event == null) {
+					return;
+				}
 				if ("Shortcuts".equals(event.getPresentation().getText())) {
 					Editor editor = dataContext.getData(PlatformDataKeys.EDITOR);
 					if (editor != null) {
