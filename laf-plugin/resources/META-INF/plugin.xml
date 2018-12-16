@@ -2,10 +2,11 @@
   <id>yugecin.intellijlaf</id>
   <name>Look and Feel chooser</name>
   <version>1.0</version>
+  <vendor>yugecin</vendor>
 
   <description>Allows changing the Look and Feel to any installed Look and Feel.</description>
 
-  <change-notes>changenotes</change-notes>
+  <change-notes>changenotes must have a minimumlength of 40</change-notes>
 
   <idea-version since-build="120.0"/>
 
